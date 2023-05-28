@@ -1,0 +1,80 @@
+<section class="h-100" style="background-color: #eee;" *ngIf="products.length >0">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+          <div>
+            <p class="mb-0"><span class="text-muted"><button class="btn btn-danger" (click)="clearCart()">Clear Cart</button></span></p>
+          </div>
+        </div>
+        <div class="card-body" class="cart-item"  *ngFor="let item of items">
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img src="{{item.product.image}}" style="height: 220px;">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">{{item.product.name}}</p>
+                
+              </div>
+              <div  class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                 <button type="button" class="quantity-left-minus btn btn-danger btn-number" (click)="QuantityDown(item)" data-type="minus" data-field="">
+                  <span class="glyphicon glyphicon-minus">-</span>
+                </button>
+
+                <input  id="form1" min="0" name="quantity" value={{item.qty}} type="text"
+                  class="form-control form-control-sm"/>
+                <button type="button" (click)="QuantityUp(item)" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                    <span class="glyphicon glyphicon-plus">+</span>
+                </button>
+              </div>
+              
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">Price:{{item.product.price*item.qty|currency}}</h5>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">{{item.product.price|currency}}</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <button class="btn btn-danger" (click)="deletefromcart(item)">🗑️</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="payment-info" style="margin-left: 10%;">
+        
+          <div class="d-flex justify-content-between information"><span>Total price:
+             <b><strong> <span>{{totalprice|currency}}</span></strong></b></span>
+          </div>
+      </div>
+      </div>
+        <div >
+          <div >
+        <span>    <button (click)="checkOut()" type="button"  class="btn btn-success">Proceed to Pay</button></span> 
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+  <section>
+    <ng-container *ngIf="products.length <1">
+      <div class="container">
+          <div class="card">
+              <h5 class="card-title">My Cart</h5>
+          </div>
+          <div class="center">
+              <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt="">
+              <h4>Your cart is empty!</h4>
+              <h6>Add item to it now</h6>
+              <button routerLink="/catalog" class="btn btn-primary">Shop Now</button>
+          </div>
+      </div>
+  </ng-container>
+  </section>

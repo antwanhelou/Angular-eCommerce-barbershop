@@ -1,0 +1,74 @@
+<!-- <div class="row">
+    <div>
+      <ng-container class="col" *ngFor="let product of products">
+    <div class="card">
+      <img class="card-img-top" src={{product.imgUrl}} style="width: 300px;" alt="" >
+      <div class="card-header">{{product.title}}</div>
+      <div class="card-text">
+        {{product.price}}
+      </div>
+      <a class="btn btn-primary" (click)=addtocart(product)>add to cart</a>
+    </div>
+     </ng-container>
+  </div>
+ 
+  </div> -->
+  
+  <!-- <div class="container">
+
+    <div class="row">
+        <ng-container *ngFor="let product of products">
+            <div class="card col-md-3">
+                <img src="{{product.imgUrl}}" alt="">
+                <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{product.title}}</h5>
+               
+                <p><strong>Price:</strong> {{product.price}}$</p>
+                <button class="btn btn-primary" (click)="addtocart(product)">Add to cart</button>
+            </div>
+        </ng-container>
+
+    </div>
+</div> -->
+<ng-container>
+
+<div class="card-top container-fluid" class="row">
+  <div class="container d-flex" class="col-auto" >
+      <div class="item">
+        <button class="button-4" role="button">  <a (click)="filter('')">
+            
+              <h6>All products</h6>
+          </a></button>
+      </div>
+      <div class="item" >
+         <button class="button-4" role="button"> <a (click)="filter('machine')">
+            
+              <h6>Electronics</h6>
+          </a></button>
+      </div>
+      <div class="item">
+        <button class="button-4" role="button">  <a (click)="filter('material')">
+            <h6>material</h6>
+             
+          </a></button>
+      </div>
+      <div class="item">
+        <button class="button-4" role="button"><a (click)="filter('hand')">
+             <h6>hand</h6>
+          </a></button>
+      </div>
+  </div>
+</div></ng-container>
+
+<div class="container" >
+  <div class="row" >
+      <ng-container *ngFor="let product of filterCategory | filter:searchKey">
+          <div class="card col-md-3">
+              <img src="{{product.image}}" alt="">
+              <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{product.name}}</h5>
+              <p><strong>Price:</strong> ${{product.price}}</p>
+              <button class="btn btn-primary" (click)="addtocart(product)">Add to cart</button>
+          </div>
+      </ng-container>
+
+  </div>
+</div>

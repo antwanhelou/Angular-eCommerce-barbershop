@@ -37,14 +37,14 @@ export class CartComponent implements OnInit {
     
   }
   getproducts(): Observable<any>{
-    return this.http.get<any>("http://localhost:3000/products")
+    return this.http.get<any>("http://localhost:8000/products")
     .pipe(map((res:any)=>{
       return res;
     }))
   }
     
   getcart():Observable<any>{
-    return this.http.get<any>("http://localhost:3000/cart")
+    return this.http.get<any>("http://localhost:8000/cart")
     .pipe(map((res:any)=>{
       return res;
     }))

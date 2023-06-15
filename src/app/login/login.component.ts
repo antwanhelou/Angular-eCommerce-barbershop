@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.createloginform();
   }
   refreshUser(){
-    this.http.get<any>("http://localhost:3000/users")
+    this.http.get<any>("http://localhost:8000/users")
     .subscribe(data=>{
      this.users=data;});
   }

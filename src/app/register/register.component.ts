@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     );
   }
   signUp(){
-      this.http.post<any>("http://localhost:3000/users", this.registerform.value)
+      this.http.post<any>("http://localhost:8000/users/add", this.registerform.value)
       .subscribe(res=>{
         alert("Signup Successfull");
         this.registerform.reset();
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       if(this.registerform.value.password != this.registerform.value.password2)
         alert("passowrd not the same!")
       else{
-        this.http.post<any>("http://localhost:3000/users", this.registerform.value)
+        this.http.post<any>("http://localhost:8000/users/add", this.registerform.value)
         .subscribe(res=>{
           alert("Signup Successfull");
           this.registerform.reset();

@@ -7,15 +7,13 @@ import { User } from '../model/user';
 })
 export class UserService {
 users:User[]=[
-/* new User("antwan","antwan@gmail.com","1234","02/08/2000","male"),
-  new User("maroon","maroon@gmail.com","1234","02/08/2000","male"),
-  new User("moran","moran@gmail.com","1234","3/3/2004","female"),*/
+
 ];
 user:any;
 
   constructor(private http: HttpClient) { }
   refreshUser(){
-    this.http.get<any>("http://localhost:3000/users")
+    this.http.get<any>("http://127.0.0.1:8000/users/")
     .subscribe(data=>{
      this.users=data;});
 

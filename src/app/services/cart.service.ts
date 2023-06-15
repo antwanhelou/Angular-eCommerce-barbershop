@@ -9,7 +9,7 @@ import { Cart, CartProduct } from '../model/cart';
   providedIn: 'root'
 })
 export class CartService {
-  baseURL: String='http://localhost:3000/';
+  baseURL: String='http://localhost:8000/';
   headers={'content-type':'application/json'};
   public cartItemList : any =[]
   public productList = new BehaviorSubject<any>([]);
@@ -25,7 +25,7 @@ export class CartService {
   }
   
   getcarts(){
-    return this.http.get<any>("http://localhost:3000/carts")
+    return this.http.get<any>("http://localhost:8000/carts")
     .pipe(map((res:any)=>{
       return res;
     }))
